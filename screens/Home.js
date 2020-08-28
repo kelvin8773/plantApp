@@ -8,61 +8,21 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {COLORS, icons, images, SIZES, FONTS} from '../constants';
+import {
+  COLORS,
+  SIZES,
+  FONTS,
+  icons,
+  images,
+  plants,
+  friends,
+} from '../constants';
 
 const Home = () => {
-  // Dummy data
-  const [newPlants, setNewPlants] = React.useState([
-    {
-      id: 0,
-      name: 'Plant 1',
-      img: images.plant1,
-      favorite: false,
-    },
-    {
-      id: 1,
-      name: 'Plant 2',
-      img: images.plant2,
-      favorite: true,
-    },
-    {
-      id: 2,
-      name: 'Plant 3',
-      img: images.plant3,
-      favorite: false,
-    },
-    {
-      id: 3,
-      name: 'Plant 4',
-      img: images.plant4,
-      favorite: false,
-    },
-  ]);
+  const [newPlants, setNewPlants] = React.useState(plants);
+  const [friendList, setFriendList] = React.useState(friends);
 
-  const [friendList, setFriendList] = React.useState([
-    {
-      id: 0,
-      img: images.profile1,
-    },
-    {
-      id: 1,
-      img: images.profile2,
-    },
-    {
-      id: 2,
-      img: images.profile3,
-    },
-    {
-      id: 3,
-      img: images.profile4,
-    },
-    {
-      id: 4,
-      img: images.profile5,
-    },
-  ]);
-
-  const renderNewPlants = (item, index) => (
+  const renderNewPlant = (item, index) => (
     <View
       style={{
         justifyContent: 'center',
@@ -188,7 +148,7 @@ const Home = () => {
                 showsHorizontalScrollIndicator={false}
                 data={newPlants}
                 keyExtractor={(item) => item.id.toString()}
-                renderItem={({item, index}) => renderNewPlants(item, index)}
+                renderItem={({item, index}) => renderNewPlant(item, index)}
               />
             </View>
           </View>
