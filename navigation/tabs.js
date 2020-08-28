@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {icons, COLORS} from '../constants';
-import {Home} from '../screens';
+import {icons, COLORS} from '../constants/';
+import {Home} from '../screens/';
 
 const Tab = createBottomTabNavigator();
 const tabOptions = {
@@ -11,6 +11,20 @@ const tabOptions = {
     height: '10%',
   },
 };
+
+const BottomButton = ({icon, color, center}) => (
+  <View style={center ? styles.centerButton : {}}>
+    <Image
+      source={icon}
+      resizeMode="contain"
+      style={
+        center
+          ? {tintColor: COLORS.white, width: 23, height: 23}
+          : {tintColor: color, width: 25, height: 25}
+      }
+    />
+  </View>
+);
 
 const Tabs = () => {
   return (
@@ -21,25 +35,21 @@ const Tabs = () => {
           const tintColor = focused ? COLORS.primary : COLORS.gray;
           switch (route.name) {
             case 'Home':
+              return <BottomButton icon={icons.flash} color={tintColor} />;
+            case 'Box':
+              return <BottomButton icon={icons.cube} color={tintColor} />;
+            case 'Camera':
               return (
-                <Image
-                  source={icons.flash}
-                  resizeMode="contain"
-                  style={{
-                    tintColor: tintColor,
-                    width: 25,
-                    height: 25,
-                  }}
+                <BottomButton
+                  icon={icons.camera}
+                  color={tintColor}
+                  center={true}
                 />
               );
-            case 'Box':
-              return <Text>Box</Text>;
-            case 'Camera':
-              return <Text>Camera</Text>;
             case 'Search':
-              return <Text>Search</Text>;
+              return <BottomButton icon={icons.search} color={tintColor} />;
             case 'Favorite':
-              return <Text>Favorite</Text>;
+              return <BottomButton icon={icons.heart} color={tintColor} />;
           }
         },
       })}>
@@ -51,5 +61,16 @@ const Tabs = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  centerButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: COLORS.primary,
+  },
+});
 
 export default Tabs;

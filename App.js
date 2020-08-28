@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 
 // Screens
-import {PlantDetail} from './screens';
+import {PlantDetail} from './screens/';
 
 // Tabs
 import Tabs from './navigation/tabs';
@@ -18,7 +18,7 @@ const App = () => {
         initialRouteName={'Home'}>
         {/* tabs */}
         <Stack.Screen name="Home" component={Tabs} />
-        {/* screen */}
+        {/* screens */}
         <Stack.Screen
           name="PlantDetail"
           component={PlantDetail}
@@ -29,4 +29,6 @@ const App = () => {
   );
 };
 
-export default App;
+export default () => {
+  return <App />;
+};
