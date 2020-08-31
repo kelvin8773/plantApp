@@ -18,7 +18,7 @@ import {
   friends,
 } from '../constants';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [newPlants, setNewPlants] = React.useState(plants);
   const [friendList, setFriendList] = React.useState(friends);
 
@@ -155,7 +155,7 @@ const Home = () => {
         </View>
       </View>
 
-      {/* Today's new share */}
+      {/* Today's share */}
       <View style={{height: '50%', backgroundColor: COLORS.lightGray}}>
         <View
           style={{
@@ -191,7 +191,7 @@ const Home = () => {
               <View style={{flex: 1}}>
                 <TouchableOpacity
                   style={{flex: 1}}
-                  onPress={() => console.log('plant is pressed.')}>
+                  onPress={() => navigation.navigate('PlantDetail')}>
                   <Image
                     source={images.plant5}
                     resizeMode="cover"
@@ -204,7 +204,7 @@ const Home = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{flex: 1, paddingTop: SIZES.base}}
-                  onPress={() => console.log('plant is pressed.')}>
+                  onPress={() => navigation.navigate('PlantDetail')}>
                   <Image
                     source={images.plant6}
                     resizeMode="cover"
@@ -219,7 +219,7 @@ const Home = () => {
               <View style={{flex: 1.3}}>
                 <TouchableOpacity
                   style={{flex: 1, paddingLeft: SIZES.font}}
-                  onPress={() => console.log('today plant pressed')}>
+                  onPress={() => navigation.navigate('PlantDetail')}>
                   <Image
                     source={images.plant7}
                     resizeMode="cover"
