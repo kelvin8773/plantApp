@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
 // Screens
-import {PlantDetail} from './screens/';
+import {PlantDetail} from './screens';
 
 // Tabs
 import Tabs from './navigation/tabs';
